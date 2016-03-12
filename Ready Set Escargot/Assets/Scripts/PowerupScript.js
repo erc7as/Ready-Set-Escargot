@@ -1,17 +1,20 @@
 ﻿#pragma strict
-var icon : Sprite;
-var hitplayer = false;
+var powerup:Sprite;
 
-function Start () {
-	gameObject.GetComponent(SpriteRenderer).sprite = icon;
+//var hitplayer = false;
+
+function Start (){
+	print("starting");	
 }
 
-function Trigger(trig:Collider2D){
-	if(trig.tag =="player"){
+function OnTriggerEnter2D(trig: Collider2D){
+	if(trig.tag == "powerup"){
 		//hitplayer = true;
 		Destroy(trig.gameObject);
+		print("Powerup Destroyed");
 	}
 	else{
+	print("Problem still here :P");
 	}
 }
 /*
@@ -24,4 +27,5 @@ function OnCollision2D(coll:Collision2D){
 }
 */
 function Update () {
+
 }
