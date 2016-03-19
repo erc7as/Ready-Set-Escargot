@@ -1,14 +1,11 @@
 ﻿#pragma strict
-<<<<<<< HEAD
 
 var leftButton = KeyCode.LeftArrow;
 var rightButton = KeyCode.RightArrow;
 var downButton = KeyCode.DownArrow;
 var upButton = KeyCode.UpArrow;
-=======
 var maxSpeed : float = 3.0;
 var acceleration : int = 5;
->>>>>>> origin/master
 
 
 function Start () {
