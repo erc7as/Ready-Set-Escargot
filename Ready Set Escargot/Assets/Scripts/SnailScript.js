@@ -38,4 +38,13 @@ if(GetComponent.<Rigidbody2D>().velocity.magnitude >= maxSpeed){
     GetComponent.<Rigidbody2D>().velocity = GetComponent.<Rigidbody2D>().velocity.normalized * maxSpeed;
 }
 //print(GetComponent.<Rigidbody2D>().velocity.magnitude);
+
+if(GetComponent.<Rigidbody2D>().velocity.magnitude > 0){
+    var x : float = GetComponent.<Rigidbody2D>().velocity.x;
+    var y : float = GetComponent.<Rigidbody2D>().velocity.y;
+    transform.rotation.z = Mathf.Atan(x/y) * 180 / Mathf.PI;
+    print("R:"+transform.rotation.z);
+    print("T"+Mathf.Atan(y/x));
+}
+
 }

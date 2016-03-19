@@ -14,7 +14,7 @@ function OnTriggerEnter2D(trig: Collider2D){
 		print("Powerup Destroyed");
 	}
 	else{
-	print("Problem still here :P");
+	//print("Problem still here :P");
 	}
 }
 /*
