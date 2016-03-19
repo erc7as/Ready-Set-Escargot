@@ -45,11 +45,11 @@ if(GetComponent.<Rigidbody2D>().velocity.magnitude >= maxSpeed){
 //print(GetComponent.<Rigidbody2D>().velocity.magnitude);
 
 if(GetComponent.<Rigidbody2D>().velocity.magnitude > 0){
-    var x : float = GetComponent.<Rigidbody2D>().velocity.x;
-    var y : float = GetComponent.<Rigidbody2D>().velocity.y;
-    transform.rotation.z = Mathf.Atan(x/y) * 180 / Mathf.PI;
-    print("R:"+transform.rotation.z);
-    print("T"+Mathf.Atan(y/x));
+    var rotateAngle : float = Vector2.Angle(Vector2.up,GetComponent.<Rigidbody2D>().velocity);
+    if(GetComponent.<Rigidbody2D>().velocity.x >0){
+        rotateAngle = -rotateAngle;
+    }
+    transform.eulerAngles.z = rotateAngle;
 }
 
 }
