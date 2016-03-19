@@ -1,0 +1,9 @@
+Basic snail
+Rock - can only move up/down/left/right,infinite acceleration
+Flying snail - moves faster in air (if ramps are a thing)
+Slippery snail - takes a while to change direction
+Ghost snail - doesn't collide with other snails
+Bouncy snail - bounces off walls with more energy than it started off with
+Faceless snail - slows down snails around it
+Ancient snail - starts each course with two random abilities
+Smelly snail - pushes nearby snails away (Even forward)
