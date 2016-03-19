@@ -9,8 +9,8 @@ var acceleration : int = 5;
 
 
 function Start () {
-	acceleration = 5;
-	maxSpeed = 3.0;
+	//acceleration = 5;
+	//maxSpeed = 3.0;
 }
 
 
@@ -46,7 +46,7 @@ if(GetComponent.<Rigidbody2D>().velocity.magnitude >= maxSpeed){
 
 if(GetComponent.<Rigidbody2D>().velocity.magnitude > 0){
     var rotateAngle : float = Vector2.Angle(Vector2.up,GetComponent.<Rigidbody2D>().velocity);
-    if(GetComponent.<Rigidbody2D>().velocity.x >0){
+    if(GetComponent.<Rigidbody2D>().velocity.x > 0){
         rotateAngle = -rotateAngle;
     }
     transform.eulerAngles.z = rotateAngle;
