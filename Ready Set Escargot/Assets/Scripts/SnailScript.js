@@ -92,7 +92,7 @@ function OnTriggerEnter2D(trig: Collider2D){
         Destroy(trig.gameObject);
         print("Powerup Destroyed");
     }
-    else if (trig.tag == "Finish"){
+    else if (trig.tag == "Finish" && forceVector.x > 0){
         print(player + " crosses the finish line!");
     }
 }
