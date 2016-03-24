@@ -9,6 +9,7 @@ var acceleration : int = 5;
 var forceVector : Vector2 = Vector2(0,0);
 var poweredUp : boolean = false;
 var powerCounter : int = 0;
+var player : String;
 
 
 function Start () {
@@ -91,7 +92,7 @@ function OnTriggerEnter2D(trig: Collider2D){
         Destroy(trig.gameObject);
         print("Powerup Destroyed");
     }
-    else{
-        //print("Problem still here :P");
+    else if (trig.tag == "Finish"){
+        print(player + " crosses the finish line!");
     }
 }
