@@ -7,6 +7,8 @@ var upButton = KeyCode.UpArrow;
 var maxSpeed : float = 3.0;
 var acceleration : int = 5;
 var forceVector : Vector2 = Vector2(0,0);
+var poweredUp : boolean = false;
+var powerCounter : int = 0;
 
 
 function Start () {
@@ -52,5 +54,44 @@ if(GetComponent.<Rigidbody2D>().velocity.magnitude > 0){
     }
     transform.eulerAngles.z = rotateAngle;
 }
-    GetComponent.<Rigidbody2D>().AddForce(forceVector*acceleration);
+GetComponent.<Rigidbody2D>().AddForce(forceVector*acceleration);
+powerCounter += 1;
+if (powerCounter >= 120){
+    poweredUp = false;
+    print("Power End!");
+}
+
+if(!poweredUp){
+    maxSpeed = 3.0;
+    acceleration = 1;
+    powerCounter = 0;
+}
+}
+
+function OnTriggerEnter2D(trig: Collider2D){
+    if(trig.tag == "powerup"){
+
+        var random : int = Random.value * 4 + 1;
+        if (random == 1) {
+            print("Speed Boost!");
+            poweredUp = true;
+            maxSpeed *= 1.5;
+            acceleration *= 2;
+        }
+        else if (random == 2) {
+            print("2");
+        }
+        else if (random == 3) {
+            print("3");
+        }
+        else if (random == 4) {
+            print("4");
+        }
+        //hitplayer = true;
+        Destroy(trig.gameObject);
+        print("Powerup Destroyed");
+    }
+    else{
+        //print("Problem still here :P");
+    }
 }
