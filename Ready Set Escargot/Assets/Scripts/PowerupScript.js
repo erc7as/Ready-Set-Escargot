@@ -4,7 +4,7 @@ var powerup:Sprite;
 //var hitplayer = false;
 
 function Start (){
-	print("starting");	
+	print("starting 2");	
 }
 
 function OnTriggerEnter2D(trig: Collider2D){
