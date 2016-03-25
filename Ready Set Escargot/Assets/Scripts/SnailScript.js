@@ -9,11 +9,13 @@ var acceleration : int = 5;
 var forceVector : Vector2 = Vector2(0,0);
 var poweredUp : boolean = false;
 var powerCounter : int = 0;
+var slimy : boolean = false;
+var slimyPatch : GameObject;
 
 
 function Start () {
 	//acceleration = 5;
-	//maxSpeed = 3.0;
+    //maxSpeed = 3.0;
 }
 
 
@@ -47,7 +49,7 @@ if(GetComponent.<Rigidbody2D>().velocity.magnitude >= maxSpeed){
 }
 //print(GetComponent.<Rigidbody2D>().velocity.magnitude);
 
-if(GetComponent.<Rigidbody2D>().velocity.magnitude > 0){
+if(GetComponent.<Rigidbody2D>().velocity.magnitude > 0 && !slimy){
     var rotateAngle : float = Vector2.Angle(Vector2.up,GetComponent.<Rigidbody2D>().velocity);
     if(GetComponent.<Rigidbody2D>().velocity.x > 0){
         rotateAngle = -rotateAngle;
@@ -65,12 +67,12 @@ if(!poweredUp){
     maxSpeed = 3.0;
     acceleration = 1;
     powerCounter = 0;
+    slimy = false;
 }
 }
 
 function OnTriggerEnter2D(trig: Collider2D){
     if(trig.tag == "powerup"){
-
         var random : int = Random.value * 4 + 1;
         if (random == 1) {
             print("Speed Boost!");
@@ -79,17 +81,29 @@ function OnTriggerEnter2D(trig: Collider2D){
             acceleration *= 2;
         }
         else if (random == 2) {
-            print("2");
+            poweredUp = true;
+            maxSpeed *= .75;
+            acceleration *= .75;
+            print("Slowdown!");
         }
         else if (random == 3) {
-            print("3");
+            print("Slime patch!");
+            Instantiate(slimyPatch, transform.position - GetComponent.<Rigidbody2D>().velocity,transform.rotation);
         }
         else if (random == 4) {
-            print("4");
+            print("NOTHING!");
         }
         //hitplayer = true;
         Destroy(trig.gameObject);
         print("Powerup Destroyed");
+    }
+    else if(trig.tag == "slime"){
+        print("SLIMY SLOWDOWN");
+        slimy = true;
+        poweredUp = true;
+        acceleration *= .25;
+        Destroy(trig.gameObject);
+        transform.rotation.z = Random.value * 360;
     }
     else{
         //print("Problem still here :P");

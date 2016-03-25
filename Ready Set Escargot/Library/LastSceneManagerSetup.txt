@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/jared_test_scene.unity
+- path: Assets/Scenes/track_one.unity
   isLoaded: 1
   isActive: 1
