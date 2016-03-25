@@ -9,8 +9,12 @@ var acceleration : int = 5;
 var forceVector : Vector2 = Vector2(0,0);
 var poweredUp : boolean = false;
 var powerCounter : int = 0;
+<<<<<<< HEAD
 var slimy : boolean = false;
 var slimyPatch : GameObject;
+=======
+var player : String;
+>>>>>>> origin/master
 
 
 function Start () {
@@ -97,6 +101,7 @@ function OnTriggerEnter2D(trig: Collider2D){
         Destroy(trig.gameObject);
         print("Powerup Destroyed");
     }
+<<<<<<< HEAD
     else if(trig.tag == "slime"){
         print("SLIMY SLOWDOWN");
         slimy = true;
@@ -107,5 +112,9 @@ function OnTriggerEnter2D(trig: Collider2D){
     }
     else{
         //print("Problem still here :P");
+=======
+    else if (trig.tag == "Finish" && forceVector.x > 0){
+        print(player + " crosses the finish line!");
+>>>>>>> origin/master
     }
 }
