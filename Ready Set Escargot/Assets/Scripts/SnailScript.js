@@ -12,6 +12,9 @@ var powerCounter : int = 0;
 var slimy : boolean = false;
 var slimyPatch : GameObject;
 var player : String;
+var finishCounter : int;
+var onFinishLine : boolean = false;
+var numLaps : int = 2;
 
 
 function Start () {
@@ -69,6 +72,7 @@ if(!poweredUp){
     acceleration = 1;
     powerCounter = 0;
     slimy = false;
+    onFinishLine = false;
 }
 }
 
@@ -106,8 +110,16 @@ function OnTriggerEnter2D(trig: Collider2D){
         Destroy(trig.gameObject);
         transform.rotation.z = Random.value * 360;
     }
-    else if (trig.tag == "Finish" && forceVector.x > 0) {
-        print(player + " crosses the finish line!");
+    else if (trig.tag == "Finish" && GetComponent.<Rigidbody2D>().velocity.x > 0) {
+        
+        if (!onFinishLine) {
+            finishCounter++;
+            onFinishLine = true;
+            print(player + " crosses the finish line!");
+        }
+        if (finishCounter >= numLaps) {
+            print("You win!");
+        }
     }
     else {
         //print("Problem still here :P");
