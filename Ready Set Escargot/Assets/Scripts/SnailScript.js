@@ -89,7 +89,7 @@ function OnTriggerEnter2D(trig: Collider2D){
         }
         else if (random == 3) {
             print("Slime patch!");
-            Instantiate(slimyPatch, transform.position - GetComponent.<Rigidbody2D>().velocity,transform.rotation);
+            Instantiate(slimyPatch, transform.position - GetComponent.<Rigidbody2D>().velocity.normalized * 2,transform.rotation);
         }
         else if (random == 4) {
             print("NOTHING!");
