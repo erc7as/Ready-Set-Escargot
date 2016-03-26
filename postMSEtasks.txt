@@ -1,0 +1,47 @@
+Stuff to improve:
+
+Controller button mappings
+	allows adding more snails
+Powerups
+	add new powerups
+	get powerups to respawn
+	add indicator of pickup/usage (having controllers will make
+					this easier)
+Finish Line
+	prevent backtracking over the finish line
+		(in one way or another)
+	indicator of when someone has won
+
+Stuff to Add:
+
+Menus
+	select a snail
+	select a track
+
+Snail stats - so that we can have unique snails
+	(honey, molassas, tar) "Speed"
+	handling/slipperyness
+	size (ramming)
+	acceleration (Cross product of velocity?)
+
+Tracks
+	art assets
+	track selection
+
+Sound
+	track music
+	power up
+	crossing the finish line
+	bump
+	slipping
+	winning the race
+	*engine sounds*
+	goofy voicing
+	menu music
+	title music?
+
+Animation
+	for powerups
+
+UI
+	item/lap/current place indicators
