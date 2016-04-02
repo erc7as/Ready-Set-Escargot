@@ -15,6 +15,7 @@ var player : String;
 var finishCounter : int;
 var onFinishLine : boolean = false;
 var numLaps : int = 2;
+var powerUpTime : float;
 
 
 function Start () {
@@ -25,7 +26,10 @@ function Start () {
 
 
 function Update () {
+    var horizAxis : float = Input.GetAxis("Horizontal_"+player);
+    var vertAxis : float = Input.GetAxis("Vertical_"+player);
     forceVector = Vector2(0,0);
+    forceVector = Vector2(horizAxis*acceleration,vertAxis*acceleration);
 if (Input.GetKey(leftButton)) {
 	//GetComponent.<Rigidbody2D>().velocity.x = -speed;
     //transform.Translate(Vector2(-1, 0) * Time.deltaTime*speed);
@@ -62,7 +66,8 @@ if(GetComponent.<Rigidbody2D>().velocity.magnitude > 0 && !slimy){
 }
 GetComponent.<Rigidbody2D>().AddForce(forceVector*acceleration);
 powerCounter += 1;
-if (powerCounter >= 120){
+if (powerUpTime >= 2){
+    powerUpTime = 0;
     poweredUp = false;
     print("Power End!");
 }
@@ -74,10 +79,15 @@ if(!poweredUp){
     slimy = false;
     onFinishLine = false;
 }
+else{
+    powerUpTime += Time.deltaTime;
+    print(powerUpTime);
+}
 }
 
 function OnTriggerEnter2D(trig: Collider2D){
     if(trig.tag == "powerup"){
+        powerUpTime = 0;
         var random : int = Random.value * 4 + 1;
         if (random == 1) {
             print("Speed Boost!");
