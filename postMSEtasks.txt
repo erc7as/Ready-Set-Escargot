@@ -24,14 +24,26 @@ Snail stats - so that we can have unique snails
 	size (ramming)
 	acceleration (Cross product of velocity?)
 
+------------------------------------------------------------------
 SNAILS:
-
 Rocky (Jeriamiah the Second) - Big and strong and slow
 Basic snail "Shelldon" - jack of all trades
 Snaileater - handling and speed
 Snonic the snailhog - fast and hard to control 
-??????? - good handling and low speed
-??????? - fast and small and weak
+UI Crasher - good handling and low speed
+Tiny Slime - fast and small and weak
+
+List of powerups:
+- slime
+- slow down
+- speed up
+- do nothing
+- salt bomb
+- shell shock power up
+- salt and shock "a-salt and battery" = blue shell equivallant 
+- invisibility for a set amount of time
+- Shellerang - throw a shell maybe not force it off just appear. 
+----------------------------------------------------------------------
 
 
 Tracks
