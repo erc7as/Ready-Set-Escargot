@@ -1,0 +1,69 @@
+Stuff to improve:
+
+Controller button mappings
+	allows adding more snails
+Powerups
+	add new powerups
+	get powerups to respawn
+	add indicator of pickup/usage (having controllers will make
+					this easier)
+Finish Line
+	prevent backtracking over the finish line
+		(in one way or another)
+	indicator of when someone has won
+
+Stuff to Add:
+
+Menus
+	select a snail
+	select a track
+
+Snail stats - so that we can have unique snails
+	(honey, molassas, tar) "Speed"
+	handling/slipperyness
+	size (ramming)
+	acceleration (Cross product of velocity?)
+
+------------------------------------------------------------------
+SNAILS:
+Rocky (Jeriamiah the Second) - Big and strong and slow
+Basic snail "Shelldon" - jack of all trades
+Snaileater - handling and speed
+Snonic the snailhog - fast and hard to control 
+UI Crasher - good handling and low speed
+Tiny Slime - fast and small and weak
+
+List of powerups:
+- slime
+- slow down
+- speed up
+- do nothing
+- salt bomb
+- shell shock power up
+- salt and shock "a-salt and battery" = blue shell equivallant 
+- invisibility for a set amount of time
+- Shellerang - throw a shell maybe not force it off just appear. 
+----------------------------------------------------------------------
+
+
+Tracks
+	art assets
+	track selection
+
+Sound
+	track music
+	power up
+	crossing the finish line
+	bump
+	slipping
+	winning the race
+	*engine sounds*
+	goofy voicing
+	menu music
+	title music?
+
+Animation
+	for powerups
+
+UI
+	item/lap/current place indicators
