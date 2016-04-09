@@ -11,6 +11,7 @@ var poweredUp : boolean = false;
 var powerCounter : int = 0;
 var slimy : boolean = false;
 var slimyPatch : GameObject;
+var powerUp : GameObject;
 var player : String;
 var finishCounter : int;
 var onFinishLine : boolean = false;
@@ -86,6 +87,7 @@ else{
 }
 
 function OnTriggerEnter2D(trig: Collider2D){
+    var powerUpPosition : Vector3 = trig.transform.position;
     if(trig.tag == "powerup"){
         powerUpTime = 0;
         var random : int = Random.value * 4 + 1;
@@ -111,6 +113,9 @@ function OnTriggerEnter2D(trig: Collider2D){
         //hitplayer = true;
         Destroy(trig.gameObject);
         print("Powerup Destroyed");
+        yield WaitForSeconds(4);
+        print("Powerup Respawn");
+        Instantiate(powerUp, powerUpPosition, Quaternion.identity);
     }
     else if(trig.tag == "slime"){
         print("SLIMY SLOWDOWN");
