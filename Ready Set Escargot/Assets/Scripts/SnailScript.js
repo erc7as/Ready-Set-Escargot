@@ -4,6 +4,7 @@ var leftButton = KeyCode.LeftArrow;
 var rightButton = KeyCode.RightArrow;
 var downButton = KeyCode.DownArrow;
 var upButton = KeyCode.UpArrow;
+var toggleButton = KeyCode.Greater;
 var maxSpeed : float = 3.0;
 var acceleration : int = 5;
 var forceVector : Vector2 = Vector2(0,0);
@@ -17,6 +18,7 @@ var finishCounter : int;
 var onFinishLine : boolean = false;
 var numLaps : int = 2;
 var powerUpTime : float;
+var absoluteControl : boolean = true;
 
 
 function Start () {
@@ -30,7 +32,18 @@ function Update () {
     var horizAxis : float = Input.GetAxis("Horizontal_"+player);
     var vertAxis : float = Input.GetAxis("Vertical_"+player);
     forceVector = Vector2(0,0);
-    forceVector = Vector2(horizAxis*acceleration,vertAxis*acceleration);
+    if(absoluteControl){
+        forceVector = Vector2(horizAxis*acceleration,vertAxis*acceleration);
+    }
+    else{
+        transform.eulerAngles.z -= horizAxis*10;
+        forceVector = transform.eulerAngles.z * transform.up * vertAxis;
+        
+    }
+    if (Input.GetKeyDown(toggleButton) || Input.GetButtonDown("Back_"+player)){
+        absoluteControl = !absoluteControl;
+        print("Absolute Controls: " + absoluteControl);
+    }
 if (Input.GetKey(leftButton)) {
 	//GetComponent.<Rigidbody2D>().velocity.x = -speed;
     //transform.Translate(Vector2(-1, 0) * Time.deltaTime*speed);
@@ -58,13 +71,14 @@ if(GetComponent.<Rigidbody2D>().velocity.magnitude >= maxSpeed){
 }
 //print(GetComponent.<Rigidbody2D>().velocity.magnitude);
 
-if(GetComponent.<Rigidbody2D>().velocity.magnitude > 0 && !slimy){
+if(GetComponent.<Rigidbody2D>().velocity.magnitude > 0 && !slimy && absoluteControl){
     var rotateAngle : float = Vector2.Angle(Vector2.up,GetComponent.<Rigidbody2D>().velocity);
     if(GetComponent.<Rigidbody2D>().velocity.x > 0){
         rotateAngle = -rotateAngle;
     }
     transform.eulerAngles.z = rotateAngle;
 }
+forceVector = forceVector.normalized;
 GetComponent.<Rigidbody2D>().AddForce(forceVector*acceleration);
 powerCounter += 1;
 if (powerUpTime >= 2){
@@ -82,7 +96,6 @@ if(!poweredUp){
 }
 else{
     powerUpTime += Time.deltaTime;
-    print(powerUpTime);
 }
 }
 
