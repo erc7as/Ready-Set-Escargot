@@ -7,7 +7,17 @@ public class level_select : MonoBehaviour {
 	public bool level2;
 	public bool ret_main;
 	public bool quit;
-		void OnMouseUp(){
+	public Sprite deflt;
+	public Sprite hover;
+
+	SpriteRenderer sr;
+
+
+	void Start(){
+		sr = GetComponent<SpriteRenderer> ();
+	}
+
+	void OnMouseUp(){
 		if (level1 == true) {
 			Application.LoadLevel (2);
 		} else if (level2 == true) {
@@ -19,9 +29,11 @@ public class level_select : MonoBehaviour {
 		}
 	}
 	void OnMouseEnter(){
-		Renderer.material.GetColor = Color.red;
+		sr.sprite = hover;
 	}
+
 	void OnMouseExit(){
-		Renderer.material.GetColor = Color.white;
+		sr.sprite = deflt;
 	}
+
 }
