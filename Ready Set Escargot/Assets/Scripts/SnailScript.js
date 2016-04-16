@@ -42,7 +42,7 @@ function Update () {
     }
     if (Input.GetKeyDown(toggleButton) || Input.GetButtonDown("Back_"+player)){
         absoluteControl = !absoluteControl;
-        print("Absolute Controls: " + absoluteControl);
+        print("Absolute Controls on player "+player+": " + absoluteControl);
     }
 if (Input.GetKey(leftButton)) {
 	//GetComponent.<Rigidbody2D>().velocity.x = -speed;
