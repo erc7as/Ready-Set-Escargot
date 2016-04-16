@@ -18,7 +18,6 @@ var onFinishLine : boolean = false;
 var numLaps : int = 2;
 var powerUpTime : float;
 
-
 function Start () {
 	//acceleration = 5;
     //maxSpeed = 3.0;
