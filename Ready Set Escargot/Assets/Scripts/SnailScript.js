@@ -19,6 +19,7 @@ var onFinishLine : boolean = false;
 var numLaps : int = 2;
 var powerUpTime : float;
 var absoluteControl : boolean = true;
+var handling : int = 5;
 
 function Start () {
 	//acceleration = 5;
@@ -35,7 +36,7 @@ function Update () {
         forceVector = Vector2(horizAxis*acceleration,vertAxis*acceleration);
     }
     else{
-        transform.eulerAngles.z -= horizAxis*10;
+        transform.eulerAngles.z -= horizAxis*handling;
         forceVector = transform.eulerAngles.z * transform.up * vertAxis;
         
     }
