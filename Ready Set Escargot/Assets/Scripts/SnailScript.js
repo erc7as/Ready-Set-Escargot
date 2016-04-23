@@ -31,12 +31,13 @@ function Start () {
 function Update () {
     var horizAxis : float = Input.GetAxis("Horizontal_"+player);
     var vertAxis : float = Input.GetAxis("Vertical_"+player);
+    var horizAxis2 : float = Input.GetAxis("HorizRight_"+player);
     forceVector = Vector2(0,0);
     if(absoluteControl){
         forceVector = Vector2(horizAxis*acceleration,vertAxis*acceleration);
     }
     else{
-        transform.eulerAngles.z -= horizAxis*handling;
+        transform.eulerAngles.z -= horizAxis2*handling;
         forceVector = transform.eulerAngles.z * transform.up * vertAxis;
         
     }
