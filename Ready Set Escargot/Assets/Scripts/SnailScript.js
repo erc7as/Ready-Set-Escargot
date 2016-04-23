@@ -13,6 +13,7 @@ var powerCounter : int = 0;
 var slimy : boolean = false;
 var slimyPatch : GameObject;
 var powerUp : GameObject;
+var shell : GameObject;
 var player : String;
 var finishCounter : int;
 var onFinishLine : boolean = false;
@@ -122,7 +123,11 @@ function OnTriggerEnter2D(trig: Collider2D){
             Instantiate(slimyPatch, transform.position - GetComponent.<Rigidbody2D>().velocity.normalized * 2,transform.rotation);
         }
         else if (random == 4) {
-            print("NOTHING!");
+            print("Shell created!");
+            var shellInstance : GameObject;
+            shellInstance = Instantiate(shell, transform.position - GetComponent.<Rigidbody2D>().velocity.normalized, Quaternion.identity);
+            shellInstance.GetComponent.<Rigidbody2D>().velocity = - GetComponent.<Rigidbody2D>().velocity.normalized*4;
+            shellInstance.GetComponent.<Rigidbody2D>().velocity += new Vector3(Random.Range(1,3), Random.Range(1,3), 0);
         }
         //hitplayer = true;
         Destroy(trig.gameObject);
@@ -138,6 +143,13 @@ function OnTriggerEnter2D(trig: Collider2D){
         acceleration *= .25;
         Destroy(trig.gameObject);
         transform.rotation.z = Random.value * 360;
+    }
+    else if (trig.tag == "shell") {
+        print("A shell hit you!");
+        poweredUp = true;
+        maxSpeed *= .75;
+        acceleration *= .75;
+        Destroy(trig.gameObject);
     }
     else if (trig.tag == "Finish" && GetComponent.<Rigidbody2D>().velocity.x > 0) {
         
