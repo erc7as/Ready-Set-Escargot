@@ -5,6 +5,7 @@ var rightButton = KeyCode.RightArrow;
 var downButton = KeyCode.DownArrow;
 var upButton = KeyCode.UpArrow;
 var toggleButton = KeyCode.Period;
+var fireButton = KeyCode.Q;
 var forceVector : Vector2 = Vector2(0,0);
 var poweredUp : boolean = false;
 var powerCounter : int = 0;
@@ -22,6 +23,7 @@ var maxSpeed : float = 3.0;
 var acceleration : int = 5;
 var handling : int = 5;
 var mass : float = 1;
+var heldPowerUp : int = 0;
 
 function Start () {
 	//acceleration = 5;
@@ -89,6 +91,32 @@ function Update () {
         absoluteControl = !absoluteControl;
         print("Absolute Controls on player "+player+": " + absoluteControl);
     }
+    if(Input.GetKeyDown || Input.GetButtonDown("Fire_"+player)){
+        if (heldPowerUp == 1) {
+            print("Speed Boost!");
+            poweredUp = true;
+            maxSpeed *= 1.5;
+            acceleration *= 2;
+        }
+        else if (heldPowerUp == 2) {
+            poweredUp = true;
+            maxSpeed *= .75;
+            acceleration *= .75;
+            print("Slowdown!");
+        }
+        else if (heldPowerUp == 3) {
+            print("Slime patch!");
+            Instantiate(slimyPatch, transform.position - GetComponent.<Rigidbody2D>().velocity.normalized * 2,transform.rotation);
+        }
+        else if (heldPowerUp == 4) {
+            print("Shell created!");
+            var shellInstance : GameObject;
+            shellInstance = Instantiate(shell, transform.position - GetComponent.<Rigidbody2D>().velocity.normalized, Quaternion.identity);
+            shellInstance.GetComponent.<Rigidbody2D>().velocity = - GetComponent.<Rigidbody2D>().velocity.normalized*4;
+            shellInstance.GetComponent.<Rigidbody2D>().velocity += new Vector3(Random.Range(1,3), Random.Range(1,3), 0);
+        }
+        heldPowerUp = 0;
+    }
     
     
 if(GetComponent.<Rigidbody2D>().velocity.magnitude >= maxSpeed){
@@ -132,30 +160,12 @@ function OnTriggerEnter2D(trig: Collider2D){
     var powerUpPosition : Vector3 = trig.transform.position;
     if(trig.tag == "powerup"){
         powerUpTime = 0;
-        var random : int = Random.value * 4 + 1;
-        if (random == 1) {
-            print("Speed Boost!");
-            poweredUp = true;
-            maxSpeed *= 1.5;
-            acceleration *= 2;
+        if(heldPowerUp == 0){
+            heldPowerUp = Random.value * 4 + 1;
+            print(:"Player "+player+" holding powerup "+" "+heldPowerUp)
         }
-        else if (random == 2) {
-            poweredUp = true;
-            maxSpeed *= .75;
-            acceleration *= .75;
-            print("Slowdown!");
-        }
-        else if (random == 3) {
-            print("Slime patch!");
-            Instantiate(slimyPatch, transform.position - GetComponent.<Rigidbody2D>().velocity.normalized * 2,transform.rotation);
-        }
-        else if (random == 4) {
-            print("Shell created!");
-            var shellInstance : GameObject;
-            shellInstance = Instantiate(shell, transform.position - GetComponent.<Rigidbody2D>().velocity.normalized, Quaternion.identity);
-            shellInstance.GetComponent.<Rigidbody2D>().velocity = - GetComponent.<Rigidbody2D>().velocity.normalized*4;
-            shellInstance.GetComponent.<Rigidbody2D>().velocity += new Vector3(Random.Range(1,3), Random.Range(1,3), 0);
-        }
+        
+        
         //hitplayer = true;
         Destroy(trig.gameObject);
         print("Powerup Destroyed");
