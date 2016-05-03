@@ -187,6 +187,12 @@ function OnTriggerEnter2D(trig: Collider2D){
         }
         if (finishCounter >= numLaps) {
             print("You win!");
+            if (GameObject.FindGameObjectsWithTag("Player").Length == 1) {
+                Application.LoadLevel("game_over");
+            }
+            else {
+                Destroy(this.gameObject);
+            }
         }
     }
     else {
