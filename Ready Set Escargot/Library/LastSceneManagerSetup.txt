@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
 - path: Assets/Scenes/snail_track.unity
-=======
-- path: Assets/Scenes/Course_Select.unity
->>>>>>> origin/master
   isLoaded: 1
   isActive: 1
