@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/track_one.unity
-=======
 - path: Assets/Scenes/Title.unity
->>>>>>> origin/master
   isLoaded: 1
   isActive: 1
