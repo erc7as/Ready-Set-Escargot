@@ -119,5 +119,9 @@ public class UIManager : MonoBehaviour
             Debug.Log(Globals.PLAYER3);
             Debug.Log(Globals.PLAYER4);
         }
-    }		
+    }	
+    public void ResetPlayers()
+    {
+        Globals.numPlayers = 0;
+    }	
 }
