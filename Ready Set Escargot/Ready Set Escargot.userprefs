@@ -2,7 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SnailScript.js">
     <Files>
-      <File FileName="Assets\Scripts\SnailScript.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\WallColl.js" Line="15" Column="1" />
+      <File FileName="Assets\Scripts\SnailScript.js" Line="266" Column="40" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

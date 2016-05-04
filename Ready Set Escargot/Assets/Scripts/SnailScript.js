@@ -37,16 +37,16 @@ var scream5: AudioClip;
 var click: AudioClip;
 var collision: AudioClip;
 var slip: AudioClip;
-var screams = [scream1,scream2,scream3,scream4,scream5];
+var screams= new Array([scream1,scream2,scream3,scream4,scream5]);
 
 function Start () {
 	//acceleration = 5;
     //maxSpeed = 3.0;
 
-
+    source = Instantiate(source,new Vector3(0, 0, 0),Quaternion.identity);
     player = GetComponent.<UI.Text>().text;
 
-    print(screams[1]);
+
 }
 
 
@@ -225,7 +225,24 @@ function OnTriggerEnter2D(trig: Collider2D){
         transform.rotation.z = Random.value * 360;
     }
     else if (trig.tag == "shell") {
-    	source.clip = scream1;
+    	var num: int=Random.Range(0,4);
+    	var used_scream:AudioClip;
+    	if (num == 0){
+    		used_scream = scream1;
+    	}
+    	else if (num == 1){
+    		used_scream = scream2;
+    	}
+    	else if (num==2){
+    		used_scream = scream3;
+    	}
+    	else if (num==3){
+    		used_scream = scream4;
+    	}
+    	else if (num==4){
+    		used_scream = scream5;
+    	}
+    	source.clip = used_scream;
     	source.Play();
         print("A shell hit you!");
         poweredUp = true;
@@ -251,7 +268,24 @@ function OnTriggerEnter2D(trig: Collider2D){
         }
     }
     else if (trig.tag == "Player"){
-    	source.clip = scream2;
+    	var num2: int=Random.Range(0,4);
+    	var used_scream2:AudioClip;
+    	if (num2 == 0){
+    		used_scream = scream1;
+    	}
+    	else if (num2 == 1){
+    		used_scream = scream2;
+    	}
+    	else if (num2==2){
+    		used_scream = scream3;
+    	}
+    	else if (num2==3){
+    		used_scream = scream4;
+    	}
+    	else if (num2==4){
+    		used_scream = scream5;
+    	}
+    	source.clip = used_scream;
     	source.Play();
 
     }
