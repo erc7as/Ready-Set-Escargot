@@ -24,10 +24,14 @@ var acceleration : int = 5;
 var handling : int = 5;
 var mass : float = 1;
 var heldPowerUp : int = 0;
+var wallcoll: GameObject;
+var scream: AudioClip ;
+var source: AudioSource;
 
 function Start () {
 	//acceleration = 5;
     //maxSpeed = 3.0;
+    wallcoll.SetActive(true);
 }
 
 
@@ -208,7 +212,18 @@ function OnTriggerEnter2D(trig: Collider2D){
             }
         }
     }
+    else if(trig.tag=="wall"){
+    	//wallcoll.SetActive(true);
+    	//print("True");
+    	source.Play();
+    }
     else {
         //print("Problem still here :P");
     }
+}
+function OnTriggerExit2D(trig: Collider2D) {
+	if(trig.tag=="wall"){
+		//wallcoll.SetActive(false);
+		//print("false");
+	}
 }
