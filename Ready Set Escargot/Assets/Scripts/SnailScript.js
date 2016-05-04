@@ -16,7 +16,7 @@ var shell : GameObject;
 var player : String;
 var finishCounter : int;
 var onFinishLine : boolean = false;
-var numLaps : int = 2;
+var numLaps : int = 3;
 var powerUpTime : float;
 var absoluteControl : boolean = true;
 var defaultMaxSpeed : float = 3.0;
@@ -233,7 +233,7 @@ function OnTriggerEnter2D(trig: Collider2D){
         acceleration *= .75;
         Destroy(trig.gameObject);
     }
-    else if (trig.tag == "Finish" && GetComponent.<Rigidbody2D>().velocity.x > 0) {
+    else if (trig.tag == "Finish" && GetComponent.<Rigidbody2D>().velocity.x < 0) {
         
         if (!onFinishLine) {
             finishCounter++;
