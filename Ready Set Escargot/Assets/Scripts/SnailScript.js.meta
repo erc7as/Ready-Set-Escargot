@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: 6046889f74c1f9e41978df5f851ba27a
-timeCreated: 1456596212
+timeCreated: 1461446572
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - slimyPatch: {fileID: 171300, guid: b0e4407d7fa8c4945adaa117bc392f8d, type: 2}
+  - powerUp: {fileID: 121144, guid: b6effe32006b44d42ac8b3e9987128b8, type: 2}
+  - shell: {fileID: 182410, guid: f3be6cd18c02ae9488d2d8fc83ebdc68, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
