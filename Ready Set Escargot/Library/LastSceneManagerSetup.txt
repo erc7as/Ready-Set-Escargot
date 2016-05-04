@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Course_Select.unity
+- path: Assets/Scenes/track_one.unity
   isLoaded: 1
   isActive: 1
