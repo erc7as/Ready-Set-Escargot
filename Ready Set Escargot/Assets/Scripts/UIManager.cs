@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class UIManager : MonoBehaviour
 {
-
     GameObject[] pauseObjects;
-
+	AudioSource audio;
+	public AudioClip click;
     // Use this for initialization
     void Start()
     {
         Time.timeScale = 1;
         pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
         hidePaused();
+		audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -117,5 +119,5 @@ public class UIManager : MonoBehaviour
             Debug.Log(Globals.PLAYER3);
             Debug.Log(Globals.PLAYER4);
         }
-    }
+    }		
 }
