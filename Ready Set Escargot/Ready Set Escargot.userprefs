@@ -1,8 +1,8 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\level_select.cs">
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SnailScript.js">
     <Files>
-      <File FileName="Assets\Scripts\level_select.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SnailScript.js" Line="244" Column="19" />
       <File FileName="..\..\Rainy-Days\Rainy-Days\Assets\Scripts\Buttons\IntrolevelBridge.js" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>

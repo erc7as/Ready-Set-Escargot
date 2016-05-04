@@ -24,10 +24,25 @@ var acceleration : int = 5;
 var handling : int = 5;
 var mass : float = 1;
 var heldPowerUp : int = 0;
+var source: AudioSource;
+var scream1 : AudioClip;
+var scream2 : AudioClip;
+var scream3 : AudioClip;
+var scream4 : AudioClip;
+var scream5: AudioClip;
+var click: AudioClip;
+var collision: AudioClip;
+var slip: AudioClip;
+var screams = [scream1,scream2,scream3,scream4,scream5];
 
 function Start () {
 	//acceleration = 5;
     //maxSpeed = 3.0;
+
+    player = GetComponent.<UI.Text>().text;
+
+    print(screams[1]);
+
 }
 
 
@@ -100,10 +115,22 @@ function Update () {
                 acceleration *= 2;
             }
             else if (heldPowerUp == 2) {
-                poweredUp = true;
-                maxSpeed *= .75;
-                acceleration *= .75;
-                print("Slowdown!");
+                var shellInstance1 : GameObject;
+                shellInstance1 = Instantiate(shell, transform.position - GetComponent.<Rigidbody2D>().velocity.normalized, transform.rotation);
+                shellInstance1.GetComponent.<Rigidbody2D>().velocity = - GetComponent.<Rigidbody2D>().velocity.normalized;
+                shellInstance1.GetComponent.<Rigidbody2D>().velocity += new Vector3(Random.Range(1,4), Random.Range(1,4), 0).normalized*4;
+
+                var shellInstance2 : GameObject;
+                shellInstance2 = Instantiate(shell, transform.position - GetComponent.<Rigidbody2D>().velocity.normalized, transform.rotation);
+                shellInstance2.GetComponent.<Rigidbody2D>().velocity = - GetComponent.<Rigidbody2D>().velocity.normalized;
+                shellInstance2.GetComponent.<Rigidbody2D>().velocity = new Vector3(Random.Range(1,4), Random.Range(1,4), 0).normalized*4;
+
+                var shellInstance3 : GameObject;
+                shellInstance3 = Instantiate(shell, transform.position - GetComponent.<Rigidbody2D>().velocity.normalized, transform.rotation);
+                shellInstance3.GetComponent.<Rigidbody2D>().velocity = - GetComponent.<Rigidbody2D>().velocity.normalized;
+                shellInstance3.GetComponent.<Rigidbody2D>().velocity += new Vector3(Random.Range(1,4), Random.Range(1,4), 0).normalized*4;
+                
+                print("SHELL STORM!");
             }
             else if (heldPowerUp == 3) {
                 print("Slime patch!");
@@ -162,6 +189,8 @@ else{
 function OnTriggerEnter2D(trig: Collider2D){
     var powerUpPosition : Vector3 = trig.transform.position;
     if(trig.tag == "powerup"){
+    	source.clip = collision;
+    	source.Play();
         powerUpTime = 0;
         if(heldPowerUp == 0){
             heldPowerUp = Random.value * 4 + 1;
@@ -175,8 +204,12 @@ function OnTriggerEnter2D(trig: Collider2D){
         yield WaitForSeconds(4);
         print("Powerup Respawn");
         Instantiate(powerUp, powerUpPosition, Quaternion.identity);
+
+
     }
     else if(trig.tag == "slime"){
+    	source.clip = slip;
+    	source.Play();
         print("SLIMY SLOWDOWN");
         slimy = true;
         poweredUp = true;
@@ -185,6 +218,8 @@ function OnTriggerEnter2D(trig: Collider2D){
         transform.rotation.z = Random.value * 360;
     }
     else if (trig.tag == "shell") {
+    	source.clip = scream1;
+    	source.Play();
         print("A shell hit you!");
         poweredUp = true;
         maxSpeed *= .75;
@@ -207,6 +242,15 @@ function OnTriggerEnter2D(trig: Collider2D){
                 Destroy(this.gameObject);
             }
         }
+    }
+    else if (trig.tag == "Player"){
+    	source.clip = scream2;
+    	source.Play();
+
+    }
+    else if(trig.tag=="wall"){
+    	source.clip = collision;
+    	source.Play();
     }
     else {
         //print("Problem still here :P");
