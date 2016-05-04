@@ -85,4 +85,9 @@ public class UIManager : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void AssignPlayer(int number)
+    {
+        Globals.PLAYER1 = Globals.snails[number];
+    }
 }
