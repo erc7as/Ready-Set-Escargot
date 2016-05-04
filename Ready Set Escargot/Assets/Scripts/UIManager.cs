@@ -78,7 +78,11 @@ public class UIManager : MonoBehaviour
     //loads inputted level
     public void LoadLevel(string level)
     {
-        Application.LoadLevel(level);
+        if( level.Equals("Course_Select") && Globals.numPlayers == 0)
+        {
+
+        }
+        else Application.LoadLevel(level);
     }
 
     public void QuitGame()
@@ -86,8 +90,32 @@ public class UIManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void AssignPlayer(int number)
+    public void AssignPlayer(string snail)
     {
-        Globals.PLAYER1 = Globals.snails[number];
+        
+        if (Globals.numPlayers < 4)
+        {
+            if (Globals.numPlayers == 0)
+            {
+                Globals.PLAYER1 = snail;
+            }
+            else if (Globals.numPlayers == 1)
+            {
+                Globals.PLAYER2 = snail;
+            }
+            else if (Globals.numPlayers == 2)
+            {
+                Globals.PLAYER3 = snail;
+            }
+            else if (Globals.numPlayers == 3)
+            {
+                Globals.PLAYER4 = snail;
+            }
+            Globals.numPlayers++;
+            Debug.Log(Globals.PLAYER1);
+            Debug.Log(Globals.PLAYER2);
+            Debug.Log(Globals.PLAYER3);
+            Debug.Log(Globals.PLAYER4);
+        }
     }
 }
