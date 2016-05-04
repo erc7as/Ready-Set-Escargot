@@ -91,29 +91,32 @@ function Update () {
         absoluteControl = !absoluteControl;
         print("Absolute Controls on player "+player+": " + absoluteControl);
     }
-    if(Input.GetKeyDown || Input.GetButtonDown("Fire_"+player)){
-        if (heldPowerUp == 1) {
-            print("Speed Boost!");
-            poweredUp = true;
-            maxSpeed *= 1.5;
-            acceleration *= 2;
-        }
-        else if (heldPowerUp == 2) {
-            poweredUp = true;
-            maxSpeed *= .75;
-            acceleration *= .75;
-            print("Slowdown!");
-        }
-        else if (heldPowerUp == 3) {
-            print("Slime patch!");
-            Instantiate(slimyPatch, transform.position - GetComponent.<Rigidbody2D>().velocity.normalized * 2,transform.rotation);
-        }
-        else if (heldPowerUp == 4) {
-            print("Shell created!");
-            var shellInstance : GameObject;
-            shellInstance = Instantiate(shell, transform.position - GetComponent.<Rigidbody2D>().velocity.normalized, Quaternion.identity);
-            shellInstance.GetComponent.<Rigidbody2D>().velocity = - GetComponent.<Rigidbody2D>().velocity.normalized*4;
-            shellInstance.GetComponent.<Rigidbody2D>().velocity += new Vector3(Random.Range(1,3), Random.Range(1,3), 0);
+    if(Input.GetKeyDown(fireButton) || Input.GetButtonDown("Fire_"+player)){
+        if(heldPowerUp != 0){
+            if (heldPowerUp == 1) {
+                print("Speed Boost!");
+                poweredUp = true;
+                maxSpeed *= 1.5;
+                acceleration *= 2;
+            }
+            else if (heldPowerUp == 2) {
+                poweredUp = true;
+                maxSpeed *= .75;
+                acceleration *= .75;
+                print("Slowdown!");
+            }
+            else if (heldPowerUp == 3) {
+                print("Slime patch!");
+                Instantiate(slimyPatch, transform.position - GetComponent.<Rigidbody2D>().velocity.normalized * 2,transform.rotation);
+            }
+            else if (heldPowerUp == 4) {
+                print("Shell created!");
+                var shellInstance : GameObject;
+                shellInstance = Instantiate(shell, transform.position - GetComponent.<Rigidbody2D>().velocity.normalized, Quaternion.identity);
+                shellInstance.GetComponent.<Rigidbody2D>().velocity = - GetComponent.<Rigidbody2D>().velocity.normalized*4;
+                shellInstance.GetComponent.<Rigidbody2D>().velocity += new Vector3(Random.Range(1,3), Random.Range(1,3), 0);
+            }
+            print("Player "+player+" used powerup "+heldPowerUp);
         }
         heldPowerUp = 0;
     }
@@ -162,7 +165,7 @@ function OnTriggerEnter2D(trig: Collider2D){
         powerUpTime = 0;
         if(heldPowerUp == 0){
             heldPowerUp = Random.value * 4 + 1;
-            print(:"Player "+player+" holding powerup "+" "+heldPowerUp)
+            print("Player "+player+" holding powerup "+heldPowerUp);
         }
         
         
