@@ -100,10 +100,22 @@ function Update () {
                 acceleration *= 2;
             }
             else if (heldPowerUp == 2) {
-                poweredUp = true;
-                maxSpeed *= .75;
-                acceleration *= .75;
-                print("Slowdown!");
+                var shellInstance1 : GameObject;
+                shellInstance1 = Instantiate(shell, transform.position - GetComponent.<Rigidbody2D>().velocity.normalized, transform.rotation);
+                shellInstance1.GetComponent.<Rigidbody2D>().velocity = - GetComponent.<Rigidbody2D>().velocity.normalized;
+                shellInstance1.GetComponent.<Rigidbody2D>().velocity += new Vector3(Random.Range(1,4), Random.Range(1,4), 0).normalized*4;
+
+                var shellInstance2 : GameObject;
+                shellInstance2 = Instantiate(shell, transform.position - GetComponent.<Rigidbody2D>().velocity.normalized, transform.rotation);
+                shellInstance2.GetComponent.<Rigidbody2D>().velocity = - GetComponent.<Rigidbody2D>().velocity.normalized;
+                shellInstance2.GetComponent.<Rigidbody2D>().velocity = new Vector3(Random.Range(1,4), Random.Range(1,4), 0).normalized*4;
+
+                var shellInstance3 : GameObject;
+                shellInstance3 = Instantiate(shell, transform.position - GetComponent.<Rigidbody2D>().velocity.normalized, transform.rotation);
+                shellInstance3.GetComponent.<Rigidbody2D>().velocity = - GetComponent.<Rigidbody2D>().velocity.normalized;
+                shellInstance3.GetComponent.<Rigidbody2D>().velocity += new Vector3(Random.Range(1,4), Random.Range(1,4), 0).normalized*4;
+                
+                print("SHELL STORM!");
             }
             else if (heldPowerUp == 3) {
                 print("Slime patch!");
