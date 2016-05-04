@@ -19,10 +19,14 @@ var onFinishLine : boolean = false;
 var numLaps : int = 2;
 var powerUpTime : float;
 var absoluteControl : boolean = true;
-var maxSpeed : float = 3.0;
-var acceleration : int = 5;
-var handling : int = 5;
-var mass : float = 1;
+var defaultMaxSpeed : float = 3.0;
+var defaultAcceleration : int = 5;
+var defaultHandling : int = 5;
+var defaultMass : float = 1;
+var maxSpeed : float;
+var acceleration : int;
+var handling : int;
+var mass : float;
 var heldPowerUp : int = 0;
 var source: AudioSource;
 var scream1 : AudioClip;
@@ -176,8 +180,10 @@ if (powerUpTime >= 2){
 }
 
 if(!poweredUp){
-    maxSpeed = 3.0;
-    acceleration = 1;
+    maxSpeed = defaultMaxSpeed;
+    acceleration = defaultAcceleration;
+    mass = defaultMass;
+    handling = defaultHandling;
     powerCounter = 0;
     slimy = false;
     onFinishLine = false;
