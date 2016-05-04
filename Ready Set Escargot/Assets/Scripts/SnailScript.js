@@ -33,11 +33,12 @@ var scream5: AudioClip;
 var click: AudioClip;
 var collision: AudioClip;
 var slip: AudioClip;
-
+var screams = [scream1,scream2,scream3,scream4,scream5];
 
 function Start () {
 	//acceleration = 5;
     //maxSpeed = 3.0;
+    print(screams[1]);
 }
 
 
@@ -237,6 +238,11 @@ function OnTriggerEnter2D(trig: Collider2D){
                 Destroy(this.gameObject);
             }
         }
+    }
+    else if (trig.tag == "Player"){
+    	source.clip = scream2;
+    	source.Play();
+
     }
     else if(trig.tag=="wall"){
     	source.clip = collision;
