@@ -39,11 +39,12 @@ function Start () {
 	//acceleration = 5;
     //maxSpeed = 3.0;
 
+
     player = GetComponent.<UI.Text>().text;
 
     print(screams[1]);
-
 }
+
 
 
 
